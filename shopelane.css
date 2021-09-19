@@ -340,3 +340,8 @@ footer > div{
 .checkprice{
   font-size: 1.3em;
 }
+#bill{
+  color: #009688;
+  font-size: 1.8em;
+  font-weight: 600;
+}

@@ -13,6 +13,9 @@
             height: 50px;
             border-radius: 5px;
             margin-top: 15px;
+            font-size: 1em;
+            font-weight: 500;
+            background-color: #009688;
         }
         #checkout{
             width: 80%;
@@ -65,7 +68,7 @@
                 <div id="totalBill">
                     <div class="bill">
                         <h3>Total Amount</h3>
-                        <p id="bill">Amount Rs:</p>
+                        <p >Amount Rs: <span id="bill">000</span></p>
                         <button onclick="Orderplaced()">Place Order</button>
                     </div>
                 </div>
@@ -73,10 +76,11 @@
         </section>
     </main>
 
-
-
-
+   
     <script>
+
+        var totalarr = 0;
+        
         var checkoutData=JSON.parse(localStorage.getItem('inCart'))
                 document.getElementById("itemsnum").innerHTML = checkoutData.length
         for (i=0;i <= checkoutData.length;i++ ){
@@ -90,18 +94,15 @@
                 var ad=$("<div class='checkoutProductCard'>").append(divsec)
                     $(`<img src="${pdata.preview}"" class='checkoutProductImg' width="100px"/>`).prependTo(ad);
             $("#productsAdded").append(ad);
-            bilcalc(pdata.price);
+            addToTotal(pdata.price)
             })
             }
-        function bilcalc(bil){
-            let be = parseInt($("#bill").text())
-            be += bil
-            console.log(bill)
-            console.log(be)
-            $("#bill").text = `${be}`
-        }
-        
-        
+            function addToTotal(x){
+                totalarr += x
+                console.log(totalarr)
+                document.getElementById("bill").innerHTML = `${totalarr}`
+            }
+    console.log(totalarr)
         function Orderplaced(){
             remove()
             alert("Order Placed Successfully");  
@@ -114,10 +115,10 @@
             document.getElementById("itemsnum").innerText = 0
             document.getElementById("cart-count").innerHTML = 0
         }
-
          
     </script>
-    <script src="./another-script.js"></script>
+     <script src="./another-script.js"></script>
+   
             <footer>
                 <div>
                     <p class="footer-heading">Online Store</p>
